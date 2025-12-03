@@ -1,0 +1,41 @@
+<div class="flex flex-col min-h-screen">
+	<div class="flex-1 flex items-center justify-center py-2">
+		<div class="w-[90vw] max-w-3xl mx-auto bg-white border border-gray-300 rounded-lg shadow-lg p-3 my-1 flex flex-col justify-start">
+			<div class="w-full mb-6 text-center">
+				<h1 class="text-2xl font-bold mt-2">{{ i18n.t('headers.title') }}</h1>
+			</div>
+		<div class="mb-4 border-b border-gray-200">
+			<nav class="flex" role="tablist">
+				<button
+					class="py-2 px-4 font-semibold focus:outline-none border-b-2 transition-colors duration-200"
+					[class.border-blue-500]="activeTab === 'password'"
+					[class.text-blue-600]="activeTab === 'password'"
+					[class.border-transparent]="activeTab !== 'password'"
+					(click)="activeTab = 'password'"
+					role="tab"
+				>
+					{{ i18n.t('tabs.password') }}
+				</button>
+				<button
+					class="py-2 px-4 font-semibold focus:outline-none border-b-2 transition-colors duration-200"
+					[class.border-blue-500]="activeTab === 'passphrase'"
+					[class.text-blue-600]="activeTab === 'passphrase'"
+					[class.border-transparent]="activeTab !== 'passphrase'"
+					(click)="activeTab = 'passphrase'"
+					role="tab"
+				>
+					{{ i18n.t('tabs.passphrase') }}
+				</button>
+			</nav>
+		</div>
+		<div class="mt-6">
+			@if (activeTab === 'password') {
+				<app-password></app-password>
+			}
+			@if (activeTab === 'passphrase') {
+				<app-passphrase></app-passphrase>
+			}
+		</div>
+	</div>
+</div>
+</div>

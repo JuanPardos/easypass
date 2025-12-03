@@ -1,0 +1,44 @@
+{
+    "headers": {
+        "title": "EasyPass"
+    },
+    "labels": {
+        "password":{
+            "length": "Longitud",
+            "symbols": "Símbolos",
+            "numbers": "Números",
+            "lowercase": "Minúsculas",
+            "uppercase": "Mayúsculas",
+            "others": "Otros (personalizado)"
+        },
+        "passphrase":{
+            "words": "Palabras"
+        },
+        "result": "Resultado"
+    },
+    "tabs": {
+        "password": "Contraseña",
+        "passphrase": "Frase de contraseña"
+    },
+    "info": {
+        "password": {
+            "symbols": "Incluir símbolos especiales (!@#$%&).",
+            "numbers": "Incluir dígitos numéricos (0-9).",
+            "lowercase": "Incluir letras minúsculas (a-z).",
+            "uppercase": "Incluir letras mayúsculas (A-Z).",
+            "others": "Incluir otros caracteres personalizados."
+        },
+        "passphrase": {
+            "words": "Número de palabras en la frase de contraseña."
+        }
+    },
+    "buttons": {
+        "generate": "Generar",
+        "copy": "Copiar al portapapeles"
+    }
+    ,
+    "messages": {
+        "copied": "Copiado al portapapeles",
+        "noCharset": "Selecciona al menos un tipo de caracter"
+    }
+}
