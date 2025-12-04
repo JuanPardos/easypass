@@ -19,6 +19,7 @@
       "@utils/*": ["app/utils/*"],
       "@assets/*": ["assets/*"],
       "@layout/*": ["app/layout/*"],
+      "@types/*": ["app/types/*"]
     }
   },
   "angularCompilerOptions": {

@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { invoke } from "@tauri-apps/api/core";
 import { I18nService } from '@utils/i18nService';
+import { PasswordConfig } from '../../types/passwordConfig';
+
 
 @Component({
 	selector: 'app-password',
@@ -11,10 +14,10 @@ import { I18nService } from '@utils/i18nService';
 })
 export class Password {
 	length = 12;
-	useSymbols = true;
+	useSymbols = false;
 	useNumbers = true;
-	useLowercase = true;
-	useUppercase = true;
+	useLowercase = false;
+	useUppercase = false;
 	useOthers = false;
 	others = '';
 	showToast = false;
@@ -23,27 +26,24 @@ export class Password {
 
 	constructor(public i18n: I18nService) {}
 
-	//TODO: Rust implementation backend
 	generate() {
-		let charset = '';
-		if (this.useLowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
-		if (this.useUppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		if (this.useNumbers) charset += '0123456789';
-		if (this.useSymbols) charset += '!@#$%&()+=[]{}<>?';
-		if (this.useOthers && this.others) charset += this.others;
+		const config: PasswordConfig = {
+			length: this.length,
+			symbols: this.useSymbols,
+			numbers: this.useNumbers,
+			lowercase: this.useLowercase,
+			uppercase: this.useUppercase,
+			others: this.useOthers && this.others ? this.others : null,
+		};
 
-		if (!charset) {
-			this.result = '';
-			this.showToastMessage(this.i18n.t('messages.noCharset'));
-			return;
-		}
-
-		const arr = [] as string[];
-		for (let i = 0; i < this.length; i++) {
-			const idx = Math.floor(Math.random() * charset.length);
-			arr.push(charset[idx]);
-		}
-		this.result = arr.join('');
+		invoke<string>('generate', { config })
+			.then((text) => {
+				this.result = text;
+			})
+			.catch((err) => {
+				console.error('generate failed', err);
+				this.showToastMessage(this.i18n.t('messages.error') ?? 'Error generating password');
+			});
 	}
 
 	async copyToClipboard() {
@@ -51,13 +51,6 @@ export class Password {
 			if (!this.result) return;
 			if (navigator?.clipboard?.writeText) {
 				await navigator.clipboard.writeText(this.result);
-			} else {
-				const textarea = document.createElement('textarea');
-				textarea.value = this.result;
-				document.body.appendChild(textarea);
-				textarea.select();
-				document.execCommand('copy');
-				textarea.remove();
 			}
 		} catch (e) {
 			console.error('Copy failed', e);
