@@ -5,4 +5,5 @@ export interface PasswordConfig {
     lowercase: boolean;
     uppercase: boolean;
     others: string | null;
+    entropy: string | null;
 }

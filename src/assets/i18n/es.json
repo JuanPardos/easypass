@@ -22,7 +22,7 @@
     },
     "info": {
         "password": {
-            "symbols": "Incluir símbolos especiales (!@#$%&).",
+            "symbols": "Incluir símbolos especiales (!@#$%&?+).",
             "numbers": "Incluir dígitos numéricos (0-9).",
             "lowercase": "Incluir letras minúsculas (a-z).",
             "uppercase": "Incluir letras mayúsculas (A-Z).",
@@ -34,9 +34,18 @@
     },
     "buttons": {
         "generate": "Generar",
+        "generateEntropy": "Generar con entropía",
         "copy": "Copiar al portapapeles"
-    }
-    ,
+    },
+    "modals": {
+        "entropy": {
+            "title": "Generar con entropía",
+            "desc": "Teclea algunos caracteres aleatorios para añadir entropía. Pulsa OK para generar.",
+            "placeholder": "Teclea caracteres aleatorios...",
+            "ok": "OK",
+            "cancel": "Cancelar"
+        }
+    },
     "messages": {
         "copied": "Copiado al portapapeles",
         "noCharset": "Selecciona al menos un tipo de caracter"

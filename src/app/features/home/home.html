@@ -29,12 +29,8 @@
 			</nav>
 		</div>
 		<div class="mt-6">
-			@if (activeTab === 'password') {
-				<app-password></app-password>
-			}
-			@if (activeTab === 'passphrase') {
-				<app-passphrase></app-passphrase>
-			}
+			<app-password [hidden]="activeTab !== 'password'"></app-password>
+			<app-passphrase [hidden]="activeTab !== 'passphrase'"></app-passphrase>
 		</div>
 	</div>
 </div>

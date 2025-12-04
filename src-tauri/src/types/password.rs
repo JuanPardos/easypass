@@ -8,4 +8,5 @@ pub struct PasswordConfig {
     pub lowercase: bool,
     pub uppercase: bool,
     pub others: Option<String>,
+    pub entropy: Option<String>,
 }

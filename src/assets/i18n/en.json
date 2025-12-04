@@ -22,7 +22,7 @@
     },
     "info": {
         "password": {
-            "symbols": "Include special symbols (!@#$%&).",
+            "symbols": "Include special symbols (!@#$%&?+).",
             "numbers": "Include numeric digits (0-9).",
             "lowercase": "Include lowercase letters (a-z).",
             "uppercase": "Include uppercase letters (A-Z).",
@@ -34,9 +34,18 @@
     },
     "buttons": {
         "generate": "Generate",
+        "generateEntropy": "Generate with entropy",
         "copy": "Copy to clipboard"
-    }
-    ,
+    },
+    "modals": {
+        "entropy": {
+            "title": "Generate with entropy",
+            "desc": "Type some random characters to add user-provided entropy. Press OK to generate.",
+            "placeholder": "Type random characters here...",
+            "ok": "OK",
+            "cancel": "Cancel"
+        }
+    },
     "messages": {
         "copied": "Copied to clipboard",
         "noCharset": "Please select at least one character type"
