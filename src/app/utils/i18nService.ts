@@ -6,8 +6,8 @@ export class I18nService {
 
     constructor(private translate: TranslateService) {
         this.translate.addLangs(['es', 'en']);
-        this.translate.setFallbackLang('en');
-        this.translate.use('es');
+        this.translate.setFallbackLang('es');
+        this.translate.use('en');
     }
 
     t(key: string, params?: any): string {

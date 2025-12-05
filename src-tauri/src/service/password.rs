@@ -36,32 +36,32 @@ pub fn generate_password(config: PasswordConfig) -> String {
         return String::new();
     }
 
-    let mut password = String::new();
+    let mut os_seed = [0u8; 32];
+    ChaCha20Rng::from_os_rng().fill_bytes(&mut os_seed);
 
-    if let Some(entropy_str) = config.entropy {
-        let entropy_bytes = entropy_str.as_bytes();
-
-        let mut os_seed = [0u8; 32];
-        let mut os_seed_rng = ChaCha20Rng::from_os_rng();
-        os_seed_rng.fill_bytes(&mut os_seed);
-
-        let hk = Hkdf::<Sha256>::new(None, &os_seed);
+    let rng = if let Some(ref entropy_str) = config.entropy {
+        let user_entropy = entropy_str.as_bytes();
+        let hk = Hkdf::<Sha256>::new(Some(user_entropy), &os_seed);
         let mut seed = [0u8; 32];
-        hk.expand(entropy_bytes, &mut seed).expect("HKDF expand failure");
 
-        let mut rng = ChaCha20Rng::from_seed(seed);
+        hk.expand(b"easypass-password-generation-v1", &mut seed)
+            .expect("HKDF expand failure");
 
-        for _ in 0..config.length {
-            let idx = rng.random_range(0..charset_len);
-            password.push(charset_vec[idx]);
-        }
+        ChaCha20Rng::from_seed(seed)
     } else {
-        let mut rng = ChaCha20Rng::from_os_rng();
-    
-        for _ in 0..config.length {
-            let idx = rng.random_range(0..charset_len);
-            password.push(charset_vec[idx]);
-        }
+        ChaCha20Rng::from_seed(os_seed)
+    };
+    generate_from_charset(rng, &charset_vec, config.length)
+}
+
+fn generate_from_charset(mut rng: ChaCha20Rng, charset: &[char], length: usize) -> String {
+    let charset_len = charset.len();
+    let mut password = String::with_capacity(length);
+
+    for _ in 0..length {
+        let idx = rng.random_range(0..charset_len);
+        password.push(charset[idx]);
     }
+    
     password
 }
