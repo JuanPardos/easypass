@@ -87,8 +87,8 @@ easypass/
 │   │   │   ├── home/            # Home page
 │   │   │   ├── password/        # Password generator
 │   │   │   └── passphrase/      # Passphrase generator
-│   │   ├── layout/              # Layout components (footer)
-│   │   ├── utils/               # Utilities (i18n service)
+│   │   ├── layout/              # Layout components 
+│   │   ├── utils/               # Utilities
 │   │   └── types/               # TypeScript types
 │   └── assets/
 │       └── i18n/                # Translation files
