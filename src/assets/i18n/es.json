@@ -25,7 +25,7 @@
     },
     "info": {
         "password": {
-            "symbols": "Incluir símbolos especiales (!@#$%&?+).",
+            "symbols": "Incluir símbolos especiales (!@#$€%&?+=).",
             "numbers": "Incluir dígitos numéricos (0-9).",
             "lowercase": "Incluir letras minúsculas (a-z).",
             "uppercase": "Incluir letras mayúsculas (A-Z).",

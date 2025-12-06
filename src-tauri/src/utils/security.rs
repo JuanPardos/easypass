@@ -11,7 +11,7 @@ fn estimate_charset_size(password: &str) -> usize {
         size += 10;
     }
     if password.chars().any(|c| !c.is_alphanumeric()) {
-        size += 32;
+        size += 10;
     }
     
     size
@@ -22,7 +22,7 @@ pub fn evaluate_password_strength(password: &str) -> f64 {
     let length = password.len();
     
     if charset_size > 0 && length > 0 {
-        ((length as f64) * (charset_size as f64).log2()).min(128.0)
+        (length as f64) * (charset_size as f64).log2()
     } else {
         0.0
     }

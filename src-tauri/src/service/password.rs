@@ -21,7 +21,7 @@ pub fn generate_password(config: PasswordConfig) -> PasswordResult {
         charset.push_str("0123456789");
     }
     if config.symbols {
-        charset.push_str("!@#$%&?+");
+        charset.push_str("!@#$€%&?+=");
     }
     if let Some(ref others) = config.others {
         charset.push_str(others);
