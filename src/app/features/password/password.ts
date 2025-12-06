@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { invoke } from "@tauri-apps/api/core";
 import { I18nService } from '@utils/i18nService';
 import { PasswordConfig } from '../../types/passwordConfig';
+import { PasswordResult } from '../../types/passwordResult';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class Password {
     others = '';
     showToast = false;
     toastMessage = '';
-    result = '';
+    result: PasswordResult | null = null;
     useEntropy = false;
     entropyMenuOpen = false;
     entropyModalOpen = false;
@@ -68,7 +69,7 @@ export class Password {
 			entropy: useEntropy ? this.entropyText : null,
         };
 
-        invoke<string>('generate', { config })
+        invoke<PasswordResult>('generate', { config })
             .then((text) => {
                 this.result = text;
             })
@@ -82,7 +83,7 @@ export class Password {
         try {
             if (!this.result) return;
             if (navigator?.clipboard?.writeText) {
-                await navigator.clipboard.writeText(this.result);
+                await navigator.clipboard.writeText(this.result.password);
             }
         } catch (e) {
             console.error('Copy failed', e);

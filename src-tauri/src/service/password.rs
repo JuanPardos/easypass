@@ -5,9 +5,10 @@ use rand::SeedableRng;
 use hkdf::Hkdf;
 use sha2::Sha256;
 
-use crate::types::password::PasswordConfig;
+use crate::types::password::{PasswordConfig, PasswordResult};
+use crate::utils::security;
 
-pub fn generate_password(config: PasswordConfig) -> String {
+pub fn generate_password(config: PasswordConfig) -> PasswordResult {
     let mut charset = String::new();
 
     if config.lowercase {
@@ -27,13 +28,20 @@ pub fn generate_password(config: PasswordConfig) -> String {
     }
 
     if charset.is_empty() {
-        return String::new();
+        return PasswordResult {
+            password: String::new(),
+            strength: security::evaluate_password_strength(""),
+        };
     }
 
     let charset_vec: Vec<char> = charset.chars().collect();
     let charset_len = charset_vec.len();
+    
     if charset_len == 0 || config.length == 0 {
-        return String::new();
+        return PasswordResult {
+            password: String::new(),
+            strength: security::evaluate_password_strength(""),
+        };
     }
 
     let mut os_seed = [0u8; 32];
@@ -54,7 +62,7 @@ pub fn generate_password(config: PasswordConfig) -> String {
     generate_from_charset(rng, &charset_vec, config.length)
 }
 
-fn generate_from_charset(mut rng: ChaCha20Rng, charset: &[char], length: usize) -> String {
+fn generate_from_charset(mut rng: ChaCha20Rng, charset: &[char], length: usize) -> PasswordResult {
     let charset_len = charset.len();
     let mut password = String::with_capacity(length);
 
@@ -62,6 +70,9 @@ fn generate_from_charset(mut rng: ChaCha20Rng, charset: &[char], length: usize) 
         let idx = rng.random_range(0..charset_len);
         password.push(charset[idx]);
     }
-    
-    password
+
+    PasswordResult {
+        password: password.clone(),
+        strength: security::evaluate_password_strength(password.as_str()),
+    }
 }

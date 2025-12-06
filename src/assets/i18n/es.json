@@ -14,7 +14,10 @@
         "passphrase":{
             "words": "Palabras"
         },
-        "result": "Resultado"
+        "result": "Resultado",
+        "security": "Seguridad",
+        "weak": "Débil",
+        "strong": "Fuerte"
     },
     "tabs": {
         "password": "Contraseña",

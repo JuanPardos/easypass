@@ -7,7 +7,11 @@ mod types {
     pub mod password;
 }
 
-use types::password::PasswordConfig;
+mod utils {
+    pub mod security;
+}
+
+use types::password::{PasswordConfig, PasswordResult};
 use service::password;
 
 #[tauri::command]
@@ -16,7 +20,7 @@ fn greet(name: &str) -> String {
 }
 
 #[tauri::command]
-fn generate(config: PasswordConfig) -> String {
+fn generate(config: PasswordConfig) -> PasswordResult {
     password::generate_password(config)
 }
 

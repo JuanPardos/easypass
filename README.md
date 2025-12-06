@@ -10,7 +10,9 @@ A secure and lightweight password and passphrase generator built with **Tauri**,
   - Uppercase letters (A-Z)
   - Numbers (0-9)
   - Symbols (!@#$%&()+...)
-  - Custom characters support
+  - Custom characters
+  - User provided entropy
+  - Security level indicator
 
 - 📝 **Passphrase Generator** - Generate memorable yet secure passphrases (WIP)
 
@@ -79,23 +81,26 @@ The compiled binary will be available in `src-tauri/target/release/`.
 
 ```
 easypass/
-├── src/                    # Angular frontend
+├── src/                         # Angular frontend
 │   ├── app/
-│   │   ├── features/       # Feature components
-│   │   │   ├── home/       # Home page with tabs
-│   │   │   ├── password/   # Password generator
-│   │   │   └── passphrase/ # Passphrase generator
-│   │   ├── layout/         # Layout components (footer)
-│   │   ├── utils/          # Utilities (i18n service)
-│   │   └── types/          # TypeScript types
+│   │   ├── features/            # Feature components
+│   │   │   ├── home/            # Home page
+│   │   │   ├── password/        # Password generator
+│   │   │   └── passphrase/      # Passphrase generator
+│   │   ├── layout/              # Layout components (footer)
+│   │   ├── utils/               # Utilities (i18n service)
+│   │   └── types/               # TypeScript types
 │   └── assets/
-│       └── i18n/           # Translation files
-├── src-tauri/              # Rust backend
+│       └── i18n/                # Translation files
+├── src-tauri/                   # Rust backend
 │   ├── src/
-│   │   ├── main.rs         # Entry point
-│   │   └── lib.rs          # Tauri commands
-│   └── Cargo.toml          # Rust dependencies
-└── package.json            # Node.js dependencies
+│   │   ├── service/             # Core services
+│   │   ├── types/               # Rust types
+│   │   ├── utils/               # Utility functions  
+│   │   ├── main.rs              # Entry point
+│   │   └── lib.rs               # Tauri commands
+│   └── Cargo.toml               # Rust dependencies
+└── package.json                 # Node.js dependencies
 ```
 
 ## Tech Stack

@@ -8,13 +8,13 @@
     "devUrl": "http://localhost:1420",
     "beforeBuildCommand": "npm run build",
     "frontendDist": "../dist/easypass/browser",
-    "beforeBundleCommand": "upx --best src-tauri/target/release/easypass.exe"
+    "beforeBundleCommand": "upx --best src-tauri/target/release/easypass"
   },
   "app": {
     "windows": [
       {
         "title": "EasyPass",
-        "width": 700,
+        "width": 800,
         "height": 600
       }
     ],
