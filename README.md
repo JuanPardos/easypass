@@ -15,7 +15,7 @@ A secure and lightweight password and passphrase generator built with **Tauri**,
   - Security level indicator
 
 - 📝 **Passphrase Generator** - Generate memorable yet secure passphrases:
-  - Adjustable number of words (3-10)
+  - Adjustable number of words (2-8)
   - Minimum and maximum word length
   - Choose between English and Spanish dictionaries
   - Custom separators
