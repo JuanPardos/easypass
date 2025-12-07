@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { invoke } from "@tauri-apps/api/core";
 import { I18nService } from '@utils/i18nService';
-import { PasswordConfig } from '../../types/passwordConfig';
-import { PasswordResult } from '../../types/passwordResult';
+import { PasswordConfig, PasswordResult } from '../../types/password';
 
 
 @Component({
@@ -14,20 +13,20 @@ import { PasswordResult } from '../../types/passwordResult';
     styleUrl: './password.css',
 })
 export class Password {
-    length = 12;
-    useSymbols = false;
-    useNumbers = true;
-    useLowercase = false;
-    useUppercase = false;
-    useOthers = false;
-    others = '';
-    showToast = false;
-    toastMessage = '';
+    length: number = 12;
+    useSymbols: boolean = false;
+    useNumbers: boolean = true;
+    useLowercase: boolean = false;
+    useUppercase: boolean = false;
+    useOthers: boolean = false;
+    others: string = '';
+    showToast: boolean = false;
+    toastMessage: string = '';
     result: PasswordResult | null = null;
-    useEntropy = false;
-    entropyMenuOpen = false;
-    entropyModalOpen = false;
-    entropyText = '';
+    useEntropy: boolean = false;
+    entropyMenuOpen: boolean = false;
+    entropyModalOpen: boolean = false;
+    entropyText: string = '';
 
     constructor(public i18n: I18nService) {}
 
@@ -69,7 +68,7 @@ export class Password {
 			entropy: useEntropy ? this.entropyText : null,
         };
 
-        invoke<PasswordResult>('generate', { config })
+        invoke<PasswordResult>('generate_password', { config })
             .then((text) => {
                 this.result = text;
             })

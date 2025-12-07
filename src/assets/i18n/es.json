@@ -3,7 +3,7 @@
         "title": "EasyPass"
     },
     "labels": {
-        "password":{
+        "password": {
             "length": "Longitud",
             "symbols": "Símbolos",
             "numbers": "Números",
@@ -11,8 +11,14 @@
             "uppercase": "Mayúsculas",
             "others": "Otros (personalizado)"
         },
-        "passphrase":{
-            "words": "Palabras"
+        "passphrase": {
+            "words": "Palabras",
+            "minLength": "Longitud mínima",
+            "maxLength": "Longitud máxima",
+            "separator": "Separador",
+            "salt": "Salt",
+            "dictEnglish": "Diccionario inglés",
+            "dictSpanish": "Diccionario español"
         },
         "result": "Resultado",
         "security": "Seguridad",
@@ -32,7 +38,14 @@
             "others": "Incluir otros caracteres personalizados."
         },
         "passphrase": {
-            "words": "Número de palabras en la frase de contraseña."
+            "words": "Número de palabras en la frase de contraseña.",
+            "minLength": "Longitud mínima de cada palabra",
+            "maxLength": "Longitud máxima de cada palabra",
+            "separator": "Separador utilizado entre palabras, por defecto es un espacio",
+            "salt": "Añade un salt: Simbolo,Número,Letra antes de la primera palabra",
+            "dictEnglish": "Usar el diccionario inglés para la selección de palabras",
+            "dictSpanish": "Usar el diccionario español para la selección de palabras",
+            "security": "Estimación, algoritmo casero"
         }
     },
     "buttons": {
@@ -51,6 +64,12 @@
     },
     "messages": {
         "copied": "Copiado al portapapeles",
-        "noCharset": "Selecciona al menos un tipo de caracter"
+        "noCharset": "Selecciona al menos un tipo de caracter",
+        "noWords": "Selecciona al menos 2 palabras",
+        "noDict": "Selecciona al menos un diccionario",
+        "invalid": "Configuración inválida"
+    },
+    "placeholders": {
+        "separator": "ESPACIO"
     }
 }

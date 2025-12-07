@@ -7,3 +7,8 @@ export interface PasswordConfig {
     others: string | null;
     entropy: string | null;
 }
+
+export interface PasswordResult {
+    password: string;
+    strength: number | null;
+}

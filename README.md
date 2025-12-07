@@ -14,11 +14,17 @@ A secure and lightweight password and passphrase generator built with **Tauri**,
   - User provided entropy
   - Security level indicator
 
-- 📝 **Passphrase Generator** - Generate memorable yet secure passphrases (WIP)
+- 📝 **Passphrase Generator** - Generate memorable yet secure passphrases:
+  - Adjustable number of words (3-10)
+  - Minimum and maximum word length
+  - Choose between English and Spanish dictionaries
+  - Custom separators
+  - Optional salt addition
+  - Security level indicator
 
 - 🌍 **Multi-language Support** - Available in English and Spanish
 
-- 📋 **One-click Copy** - Easily copy generated passwords to clipboard
+- 📋 **One-click Copy** - Copy generated passwords to clipboard
 
 - 🎨 **Modern UI** - Clean interface built with Tailwind CSS
 
@@ -75,7 +81,7 @@ npm run tauri build
 
 The compiled binary will be available in `src-tauri/target/release/`.
 
-> **Note:** Ensure UPX is installed and available in your PATH for optimal binary compression.
+> **Note:** Ensure UPX is installed and available in your PATH for optimal binary compression. Linux user may need to modify UPX settings (beforeBundleCommand) in `src-tauri/tauri.conf.json`.
 
 ## Project Structure
 

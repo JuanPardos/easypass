@@ -3,7 +3,7 @@
         "title": "EasyPass"
     },
     "labels": {
-        "password":{
+        "password": {
             "length": "Length",
             "symbols": "Symbols",
             "numbers": "Numbers",
@@ -11,8 +11,14 @@
             "uppercase": "Uppercase",
             "others": "Others (custom)"
         },
-        "passphrase":{
-            "words": "Words"
+        "passphrase": {
+            "words": "Words",
+            "minLength": "Minimum length",
+            "maxLength": "Maximum length",
+            "separator": "Separator",
+            "salt": "Salt",
+            "dictEnglish": "English dictionary",
+            "dictSpanish": "Spanish dictionary"
         },
         "result": "Result",
         "security": "Security",
@@ -32,7 +38,14 @@
             "others": "Include other custom characters."
         },
         "passphrase": {
-            "words": "Number of words in the passphrase."
+            "words": "Number of words in the passphrase.",
+            "minLength": "Minimum word length",
+            "maxLength": "Maximum word length",
+            "separator": "Separator used between words, defaults to space",
+            "salt": "Adds a Salt: Symbol,Number,Letter before the first word",
+            "dictEnglish": "Use the English dictionary for word selection",
+            "dictSpanish": "Use the Spanish dictionary for word selection",
+            "security": "Estimated, made in house algorithm"
         }
     },
     "buttons": {
@@ -51,6 +64,12 @@
     },
     "messages": {
         "copied": "Copied to clipboard",
-        "noCharset": "Please select at least one character type"
+        "noCharset": "Please select at least one character type",
+        "noWords": "Please choose at least 2 words",
+        "noDict": "Please select at least one dictionary",
+        "invalid": "Invalid configuration"
+    },
+    "placeholders": {
+        "separator": "SPACE"
     }
 }
