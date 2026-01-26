@@ -7,8 +7,7 @@
     "beforeDevCommand": "npm run start",
     "devUrl": "http://localhost:1420",
     "beforeBuildCommand": "npm run build",
-    "frontendDist": "../dist/easypass/browser",
-    "beforeBundleCommand": "upx --best src-tauri/target/release/easypass.exe"
+    "frontendDist": "../dist/easypass/browser"
   },
   "app": {
     "windows": [
