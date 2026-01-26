@@ -47,7 +47,7 @@ jobs:
             upx-ucl
 
       - name: Build & package
-        run: npm run tauri build --verbose
+        run: npm run tauri build -- --verbose
 
       - name: List build outputs for debugging
         run: |
