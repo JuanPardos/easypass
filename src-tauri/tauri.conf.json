@@ -7,7 +7,8 @@
     "beforeDevCommand": "npm run start",
     "devUrl": "http://localhost:1420",
     "beforeBuildCommand": "npm run build",
-    "frontendDist": "../dist/easypass/browser"
+    "frontendDist": "../dist/easypass/browser",
+    "beforeBundleCommand": "node ./scripts/compress.js"
   },
   "app": {
     "windows": [
@@ -22,7 +23,7 @@
     }
   },
   "bundle": {
-    "active": false,
+    "active": true,
     "targets": "all",
     "icon": [
       "icons/32x32.png",
