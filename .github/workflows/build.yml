@@ -45,17 +45,6 @@ jobs:
             squashfs-tools \
             xz-utils \
             upx-ucl
-        
-      - name: Install linuxdeploy + plugins
-        run: |
-          wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
-          wget https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/linuxdeploy-plugin-gtk.sh
-
-          chmod +x linuxdeploy-x86_64.AppImage
-          chmod +x linuxdeploy-plugin-gtk.sh
-
-          sudo mv linuxdeploy-x86_64.AppImage /usr/local/bin/linuxdeploy
-          sudo mv linuxdeploy-plugin-gtk.sh /usr/local/bin/
 
       - name: Build & package
         run: npm run tauri build
